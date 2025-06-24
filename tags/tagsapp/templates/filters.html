@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+
+{% comment %} Filters - templates that transform values of variables and tag arguments {% endcomment %}
+{% comment %} {{ variable_name | filter }} {% endcomment %}
+{% block title %} Filters {% endblock title %}
+{% block content %}  
+<h2>{{ my_string | lower }}</h2>
+<h2>{{ my_string | upper }}</h2>
+
+<h2>Date</h2>
+<p>Date: {{ my_date | date:"F j, Y"}}</p> {% comment %}  F- full day J- month without a leading zero ',' -the comma to seperate the date Y- year {% endcomment %}
+
+<h2>Truncation</h2>
+<p>Truncate: {{long_string |truncatechars:14}}</p>
+
+<h2>Default</h2>
+<p>The user has chosen {{ default_colour | default:"'default colour'"}} as their favourite colour.</p>
+
+<h2>Length</h2>
+<p>These are the number of characters(length of a string): {{ long_string | length }}</p>
+
+<h2>Capitalizing the first letter of a value</h2>
+<p>Captialize 'elephant': {{ lowercase_word | capfirst }}</p>
+
+<h2>Join</h2>
+<p>Join all items in a list into a string: {{ fruits | join:" & " }}</p>
+
+<h2>Slice</h2>
+<p>Returns the specified items from a list: {{ long_string | slice:"3:10" }}</p> {% comment %} {{ list|slice:"from:to" }}, You can define the from (inlcuded) and to (not included) indexes. {% endcomment %}
+
+<h2>Wordcount</h2>
+<p>The number of words in the sentence is: {{ long_string | wordcount }}</p>
+
+<h2>Line break</h2>
+<h4>Without the line breaks filter applied: </h4> 
+<p>{{ intro }}</p> 
+<h4>With the line breaks filter applied: </h4> 
+<p>{{ intro | linebreaks }}</p> 
+
+
+{% endblock content %}

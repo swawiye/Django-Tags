@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% comment %} The first line that extends the base template  {% endcomment %}
+{% load static %}
+
+{% block title %} Learning Django templates  {% endblock title %}
+
+{% block content %} 
+
+<h2>{{key_message}}</h2>
+
+{% comment %}  
+    Django template tags 
+    {% tag_name arguement1 argument2 %}{% endtag_name %} 
+{% endcomment %}
+
+
+{% comment %} If tag {% endcomment %}
+{% if user.authenticated %}
+    Welcome, {{ user.username }}!
+{% else %}
+    please log in to access
+{% endif %}
+
+{% comment %} For tag {% endcomment %}
+<ul>
+    {% for item in items %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<img src="{{ STATIC_URL }}static/images/whiteboard-1.jpg" width="200" height="200" alt="image.png"/>
+{% comment %} Alternative method: <img src="{% static 'whiteboard-1.jpg' %}" width="400" height="400" alt="image.png"> {% endcomment %}
+
+{% comment %} 
+    Block 
+    
+    {% block title %}
+    Django Template Tags
+    {% endblock title %}
+{% endcomment %}
+
+{% endblock content %}
