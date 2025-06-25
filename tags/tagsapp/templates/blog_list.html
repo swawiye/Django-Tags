@@ -3,7 +3,7 @@
 {% block title %}Blog List with Editors{% endblock %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">Blog Posts and Editors</h1>
+<h1 class="text-3xl font-bold mb-6 text-center text-pink-500">Blog Posts and Editors</h1>
 
  {% for blog in blogs %}
  <div class="bg-white shadow rounded-xl p-6 mb-6">
@@ -11,7 +11,7 @@
     <p class="text-sm text-gray-600 mb-1"><strong>Author:</strong> {{ blog.author.username }}</p>
     <p class="text-sm text-gray-500 mb-4"><strong>Published:</strong> {{ blog.published_date|date:"F j, Y" }}</p>
 
-    <div class="prose prose-indigo max-w-none mb-4">
+    <div class="prose prose-pink max-w-none mb-4">
         {{ blog.rendered_text|safe }}
     </div>
 
