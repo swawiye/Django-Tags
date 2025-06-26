@@ -1,8 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import datetime
-from .models import Blog # importing the blog
+from .models import Blog, Subscriber# importing the blog
 import markdown # importing the mark
 from django.utils.safestring import mark_safe
+from django.contrib import messages
+# To send the email
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 def index(request) :
@@ -37,3 +41,21 @@ def blog_list(request):
     for blog in blogs:
         blog.rendered_text = mark_safe(markdown.markdown(blog.text))
     return render(request, 'blog_list.html', {'blogs':blogs})
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['email'] #obtaining the email value
+        if Subscriber.objects.filter(email=email).exists():
+            messages.error(request, 'You are already subscribed.')
+        else:
+            subscriber = Subscriber(email=email)
+            # Sending the email
+            subject = 'Welcom to The Django Blog!'
+            message = f'Hi {email} get ready to enjoy some interesting blogs.'
+            from_email = settings.EMAIL_HOST_USER
+            recepient_list = [email]
+            send_mail(subject, message, from_email, recepient_list, fail_silently=False)
+            subscriber.save()
+            messages.success(request, 'Thank you for subscribing!')
+            return redirect('subscribe')
+    return render(request, 'subscribe.html')
