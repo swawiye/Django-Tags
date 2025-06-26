@@ -12,7 +12,7 @@
 # CREATE INDEX: - Creates an index(search key)
 # DROP INDEX: - Delete an index(search key)
 
-# Syntax for upfating records
+# Syntax for updating records
 # UPDATE Customers
 # SET column1= values, column2= values
 # WHERE condition;
