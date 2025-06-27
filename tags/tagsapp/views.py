@@ -50,7 +50,7 @@ def subscribe(request):
         else:
             subscriber = Subscriber(email=email)
             # Sending the email
-            subject = 'Welcom to The Django Blog!'
+            subject = 'Welcome to The Django Blog!'
             message = f'Hi {email} get ready to enjoy some interesting blogs.'
             from_email = settings.EMAIL_HOST_USER
             recepient_list = [email]

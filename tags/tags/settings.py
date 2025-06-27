@@ -144,9 +144,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' -Used for actual production level
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' -Used for actual production level, SMTP-simple mail transfer protocol
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 5432
-EMAIL_HOST_USER = 'djangoApp@gmail.com'
-# EMAIL_HOST_PASSWORD = 'xyz@BC123'
-EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True #TLS- transport layer security, used to encrypt email data
